@@ -19,7 +19,7 @@ class Mahasiswa {
    * @param {object} nilaiPerkiraan jarak perkiraan data mahasiswa
    * @returns {object} this
    */
-  fillData(banyakData, nilaiPerkiraan) {
+  isiData(banyakData, nilaiPerkiraan) {
     const { kehadiran, tugas, uts, uas } = nilaiPerkiraan;
 
     for (let index = 0; index < banyakData; index++) {
@@ -222,16 +222,22 @@ const kelas = [
   },
 ];
 
-const dataMhs = new Mahasiswa().fillData(250, nilaiPerkiraan).data;
+const dataMhs = new Mahasiswa().isiData(250, nilaiPerkiraan).data;
+
 const nilaiAkhirMhs = new Mahasiswa(dataMhs)
   .hitungNilaiAkhir(bobot, batasNilaiMaks)
   .pengkelasanNilaiAkhir(kelas).data;
+
 const nilaiRataRataMhs = new Mahasiswa(nilaiAkhirMhs).hitungRataRata();
+
 const standarDeviasi = new Mahasiswa(nilaiAkhirMhs).hitungNilaiStandarDeviasi();
+
 const variant = new Mahasiswa(nilaiAkhirMhs).hitungNilaiVariant();
+
 const nilaiAkhirMhsTerendah = new Mahasiswa(
   nilaiAkhirMhs
 ).ambilNilaiAkhirTerendah();
+
 const nilaiAkhirMhsTertinggi = new Mahasiswa(
   nilaiAkhirMhs
 ).ambilNilaiAkhirTertinggi();
